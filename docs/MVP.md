@@ -1,6 +1,6 @@
 # MVP plan
 
-## First vertical slice
+## First usable slice (planned)
 
 1. Browse a site in the app's isolated Chromium environment.
 2. Use the context menu on an ordinary HTML `<img>` to choose **Add to Quick Session**.
@@ -14,15 +14,18 @@ One active Quick Session; ordinary HTML images; temporary manifest/cache; source
 
 ## Deliberately out of scope
 
-Arbitrary video, blob URLs, HLS/DASH, site-specific adapters, AI/person matching, encryption vault, tags, cloud sync, browser extensions, universal scraping, permanent internal library/catalog, and saved `.pmbgallery` implementation.
+Arbitrary video, blob URLs, HLS/DASH, site-specific adapters, AI/person matching, encryption vault, tags, cloud sync, browser extensions, universal scraping, permanent internal library/catalog, and saved-gallery implementation.
 
-## Stages
+## Near-term milestones
 
-1. **Scaffold (current):** Electron/React and Spring Boot startup integration, health endpoint, docs.
-2. **Browse and capture:** isolated browser and ordinary-image context-menu capture into the temporary session.
-3. **Review:** tray thumbnails and gallery, item removal and clear.
-4. **Recovery and polish:** restart recovery, clear/quit choices, usability refinement.
-5. **Evaluate:** assess whether collect-view-decide materially improves the scattered-media workflow.
+1. **Scaffold — implemented:** Electron/React and Spring Boot startup integration, health endpoint, placeholder screen.
+2. **Native browser composition/security spike — next:** prove native browser/tray composition and security boundaries. No capture or session persistence.
+3. **Browser shell — future next step:** navigation controls, Browse/Gallery switching, rail/tray UI, and placeholder Quick Session UI. No capture or persistence.
+4. **Recoverable Quick Session foundation:** file-based session state, recovery, and clear behavior.
+5. **Ordinary public-image capture:** context-menu capture and gallery review.
+6. **Evaluate/polish:** assess the workflow and refine usability as appropriate.
+
+The integrated browser profile is planned to persist separately from Quick Session files. Windows remains a target but is not yet validated; macOS is the primary development and validation platform.
 
 ## Acceptance criteria for first usable MVP
 
