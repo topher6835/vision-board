@@ -25,7 +25,7 @@ Begin with ordinary HTML images, context-menu capture, source page and direct UR
 ## Current scaffold assumptions
 
 - Development starts the Java backend as an Electron-managed Maven child process.
-- The scaffold API uses fixed loopback port 8765 with a fresh random token per Electron launch.
+- The current development scaffold uses fixed loopback port 8765 with a fresh random token per Electron launch; dynamic port selection remains undecided.
 - Production backend packaging, installer design, and persistent manifest format are not decided here.
 
 ## Future possibilities (not commitments or implemented)

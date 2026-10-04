@@ -12,7 +12,9 @@ flowchart LR
 
 Electron owns Chromium/WebContentsView, browser navigation, isolated cookies/storage, browser events, and eventual media detection/capture. Java is the trusted application layer for Quick Session domain behavior, temporary session state, metadata, and future package/cache services. Do not move browser-specific responsibilities into Java.
 
-The renderer is currently a React placeholder. `desktop/main.cjs` launches Maven in development, creates a random token, passes it via environment to Spring Boot, and checks the authenticated health endpoint. Spring binds to `127.0.0.1:8765`. The API is intentionally small; remote pages must never receive API access or the token.
+The renderer is currently a React placeholder. `desktop/main.cjs` launches Maven in development, creates a random token, passes it via environment to Spring Boot, and checks the authenticated health endpoint before creating the window. Startup fails closed if Maven exits, authentication fails, or the health check times out. A Spring servlet filter protects every `/api/**` endpoint; controllers do not implement their own token checks. Remote pages must never receive API access or the token.
+
+The current development scaffold uses fixed loopback port `8765`; this is an implementation assumption, not a permanent architecture decision. On macOS, closing the last window leaves the app active and `activate` recreates the window without relaunching Maven. The Maven process runs in a separate process group so app quit can terminate the Maven/Spring process tree.
 
 ## Security boundaries
 
